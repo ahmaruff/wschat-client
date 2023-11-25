@@ -1,8 +1,12 @@
 import Alpine from 'alpinejs'
 import router from './src/router';
-
+// import app from '/src/tes';
 window.Alpine = Alpine;
 
-Alpine.data('router', router)
+// window.app = app;
 
+
+// window.onload = app.init
+Alpine.data('router', router)
+// Alpine.data('appws', appws)
 Alpine.start();

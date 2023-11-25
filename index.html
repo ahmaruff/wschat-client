@@ -53,28 +53,35 @@
         <template x-if="currentRoute == '#/chat'">
           <div>
             <div class="flex flex-col-reverse gap-4 md:flex-row ">
-              <div class="w-full h-full p-4 overflow-y-scroll rounded-md bg-slate-200 md:w-1/3 h-[28rem]">
+              <div class="w-full p-4 overflow-y-scroll rounded-md bg-slate-200 md:w-1/3 h-[28rem]">
                 <h1 class="mb-2 text-xl font-bold text-slate-600">Active Session</h1>
-                <article class="w-full">
-                  <section class="w-full p-2 mb-2 border-b-2 rounded-md bg-slate-700 border-slate-800">
-                    <h2 class="text-lg font-bold text-purple-400">123454336</h2>
-                    <p class="text-sm text-slate-300">Kamu ada dimana sih anji!</p>
+                <button class="w-full px-4 py-2 my-2 text-white rounded-md bg-slate-500 hover:bg-slate-600" type="submit" onclick="app.generateNewSession('PRIVATE')">
+                  New Session
+                </button>
+                <article class="w-full" id="session-list">
+                  <section class="hidden w-full p-2 mb-2 border-b-2 rounded-md bg-slate-700 border-slate-800">
+                    <!-- this is hiddent element so vite  didnot purge the CSS class, we need it in tes.js -->
+                    <h2 class="text-lg font-bold text-purple-400 truncate">123454336</h2>
+                    <button class="w-full px-4 py-2 mt-2 text-white rounded-md bg-slate-500 hover:bg-slate-600">
+                      Join room
+                    </button>
                   </section>
-                  <section class="w-full p-2 border-b-2 rounded-md bg-slate-700 border-slate-800">
-                    <h2 class="text-lg font-bold text-purple-400">123454336</h2>
-                    <p class="text-sm text-slate-300">Kamu ada dimana sih anji!</p>
-                  </section>
+
+                  <div class="hidden p-2 mb-2 ml-auto mr-auto text-xs text-right text-white rounded-md w-fit bg-slate-600">
+                    <div class="bg-emerald-700"></div>  
+                  </div>
+                  <!-- END -->
                 </article>
               </div>
-              <div class="w-full p-4 rounded-md bg-slate-800 md:w-2/3 h-[28rem]">
-                <h1 class="mb-2 text-xl font-bold text-slate-300" x-text="username"></h1>
+              <div class="w-full p-4 rounded-md bg-slate-800 md:w-2/3 h-[28rem] relative">
+                <h1 class="mb-2 text-xl font-bold text-slate-300" id="displayname"></h1>
                 <div class="">
-                  <div id="chat-screen" class="flex-grow w-full overflow-y-scroll">
+                  <div id="chat-screen" class="w-full overflow-y-scroll h-[20rem]">
                   </div>
                 </div>
-                <section class="sticky top-[100vh]">
+                <section class="absolute w-[95%] bottom-4 right-4">
                   <form onsubmit="app.doSendMessage(); return false;" class="w-full" id="chatform">
-                    <div class="flex flex-row gap-x-2">
+                    <div class="flex flex-row w-full gap-x-2">
                       <input type="text" id="sendmsg" class="w-5/6 p-2 mt-2 rounded-md text-slate-800">
                       <button type="submit" class="block w-1/6 p-2 mt-2 text-white border rounded-md border-emerald-700 bg-emerald-900 hover:bg-emerald-700">Send</button>
                     </div>
@@ -93,6 +100,10 @@
         </template>
       </div>
     </main>
+    <!--
+    <script src="./src/tes.js"></script>
+    -->
     <script type="module" src="./main.js"></script>
+    <script src="/tes.js"></script>
   </body>
 </html>
