@@ -3,6 +3,11 @@
 
 This project is part of Talenthub batch 11 "Scalable Web Service With Go" submission
 
+## Preview
+
+![homepage](1.png)
+
+![chat page](2.png)
 
 ## Known Limitations/Bugs
 
